@@ -30,7 +30,7 @@ def main():
     glfw.make_context_current(window)
     inicializar()
     
-    while not glfw.make_context_current(window):
+    while not glfw.window_should_close(window): # tava bugado isso aki
         glfw.poll_events()
         render()
         triangulo()
