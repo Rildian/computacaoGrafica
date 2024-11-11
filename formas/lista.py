@@ -131,7 +131,7 @@ def estrela():
         glVertex2fv(v)
     glEnd()
 
-def triangulos(borda = True):
+def triangulos(borda = True): # fazer minha função de triangulos
     vertices = [
         [-0.8,-0.6],
         [ 0.0,-0.6],
@@ -149,16 +149,16 @@ def triangulos(borda = True):
         [0.0,0.5,0.0],
     ]
     
-    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)       # habilitando a renderizaÃ§Ã£o de polÃ­gonos de forma preenchida
-    glBegin(GL_TRIANGLES)                           # primitiva: triÃ¢ngulos (conecta de trÃªs em trÃªs)
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)       # novamente, preencha com a seguinte config
+    glBegin(GL_TRIANGLES)                           # é um triangulo
     for v, c in zip(vertices, cores):
-        glColor3fv(c)
+        glColor3fv(c)                               # coloque essas cores
         glVertex2fv(v)
     glEnd()
 
-    if borda:                                       # caso deseje visualizar as bordas dos polÃ­gonos na cor preta
-        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE)   # habilitando a rasterizaÃ§Ã£o apenas das arestas dos polÃ­gonos
-        glColor3f(0,0,0)                            # atribuindo uma cor uniforme para todos os vÃ©rtices
+    if borda:                                       
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE)   # nas faces, faça um triangulo de linhas
+        glColor3f(0,0,0)                            # coloque a cor preta
         glBegin(GL_TRIANGLES)
         for v in vertices:
             glVertex2fv(v)
@@ -212,20 +212,93 @@ def quadrados(borda = True):
         [0.0, 0.3, 0.9] # azul
     ]
     
-    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL) 
-    glBegin(GL_QUADS)
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL) # blz, preencha meus quadrados com as cores da lista
+    glBegin(GL_QUADS) # faça essa forma
     for v, c in zip(vertices, cores):
         glColor3fv(c)
         glVertex2fv(v)
     glEnd()
 
-    if borda:                                       # caso deseje visualizar as bordas dos polÃ­gonos na cor preta
-        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE)   # habilitando a rasterizaÃ§Ã£o apenas das arestas dos polÃ­gonos
-        glColor3f(0,0,0)                            # atribuindo uma cor uniforme para todos os vÃ©rtices
-        glBegin(GL_QUADS)
+    if borda:                                       
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE) # nas faces, coloque essas linhas
+        glColor3f(0,0,0)                            
+        glBegin(GL_QUADS) # as linha sseguiração esse formato
         for v in vertices:
             glVertex2fv(v)
         glEnd()
+
+
+
+def trianguloComBorda():
+    vertices = [
+        [-0.5, -0.5],
+        [0.5, -0.5],
+        [0.0, 0.6]
+    ]
+
+    cores = [
+        [1.0, 0.0, 0.0],
+        [1.0, 0.0, 0.0],
+        [1.0, 0.0, 0.0]
+    ]
+
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)
+    glBegin(GL_TRIANGLES)
+    for v, c in zip(vertices, cores):
+        glColor3fv(c)
+        glVertex2fv(v)
+    glEnd()
+
+   
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE)
+    glBegin(GL_TRIANGLES)
+    glColor3f(0.0, 0.0, 0.0) # as cores dos vertices a serem desenhados
+    for v in vertices:
+        glVertex2fv(v)
+    glEnd()
+
+def fortaleza():
+    # triangulo
+    verticesDoRetangulo = [ # melhoras as coordenadas, ta muito pra baixo
+        [-0.6, 0.5],
+        [-0.6, 0.2],
+        [0.6, 0.2],
+        [0.6, 0.5]
+    ]
+
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE)
+    glBegin(GL_QUADS)
+    glColor3f(0.0, 0.0, 1.0)
+    for vertices in verticesDoRetangulo:
+        glVertex2fv(vertices)
+    glEnd()
+
+    verticesDoTrianguloAzul = [
+        [-0.6, 0.1],
+        [-0.1, 0.1],
+        [-0.1, -0.8]
+    ]
+
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)
+    glBegin(GL_TRIANGLES)
+    glColor3f(0.0, 0.0, 1.0)
+    for vertices in verticesDoTrianguloAzul:
+        glVertex2fv(vertices)
+    glEnd()
+
+    verticesDoTrianguloVermelho = [
+        [0.6, 0.1],
+        [0.1, 0.1],
+        [0.1, -0.8]
+    ]
+    
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)
+    glBegin(GL_TRIANGLES)
+    glColor3f(1.0, 0.0, 0.0)
+    for vertices in verticesDoTrianguloVermelho:
+        glVertex2fv(vertices)
+    glEnd()
+
 
 def main():
     glfw.init()
@@ -244,7 +317,9 @@ def main():
         #m()
         #estrela()
         #triangulos()
-        quadrados()
+        #quadrados()
+        #trianguloComBorda()
+        #fortaleza()
         glfw.swap_buffers(window)
     glfw.terminate()
 
