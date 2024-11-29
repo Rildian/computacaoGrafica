@@ -10,5 +10,6 @@
             <h2>Opcionais</h2>
               <p>PyOpenGL-accelerate é interessante p/ otimizar</p>
                 <code>pip install PyOpenGL-accelerate</code>
+                <br><br>
               <p>Biblioteca pillow para pôr ícones</p>
                 <code>pip install pillow</code>
