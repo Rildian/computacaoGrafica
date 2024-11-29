@@ -299,6 +299,76 @@ def fortaleza():
         glVertex2fv(vertices)
     glEnd()
 
+def octogono():
+    verticesDoQuadrado = [
+        [-0.5, -0.5],
+        [-0.5, 0.5],
+        [0.5, 0.5],
+
+        [0.5, -0.5],
+        [-0.5, -0.5],
+        [-0.5, 0.5]
+    ]
+
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)
+    glBegin(GL_TRIANGLE_FAN)
+    glColor3f(0.0, 0.498, 0.996)
+    for v in verticesDoQuadrado:
+        glVertex2fv(v)
+    glEnd()
+
+    verticesDoTrianguloAcima = [
+        [-0.5, 0.5],
+        [0.0, 0.7], # do meio
+        [0.5, 0.5]
+    ]
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)
+    glBegin(GL_TRIANGLE_FAN)
+    glColor3f(0.0, 0.498, 0.996)
+    for v in verticesDoTrianguloAcima:
+        glVertex2fv(v)
+    glEnd()
+
+    verticesDoTrianguloAbaixo = [
+        [-0.5, -0.5],
+        [0.0, -0.7], # do meio
+        [0.5, -0.5]
+    ]
+    
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)
+    glBegin(GL_TRIANGLE_FAN)
+    glColor3f(0.0, 0.498, 0.996)
+    for v in verticesDoTrianguloAbaixo:
+        glVertex2fv(v)
+    glEnd()
+
+    verticesDoTrianguloDaEsquerda = [
+        [-0.5, 0.5],
+        [-0.63, 0.0], # do meio
+        [-0.5, -0.5]
+    ]
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)
+    glBegin(GL_TRIANGLE_FAN)
+    glColor3f(0.0, 0.498, 0.996)
+    for v in verticesDoTrianguloDaEsquerda:
+        glVertex2fv(v)
+    glEnd()
+
+    verticesDoTrianguloDaDireita = [
+        [0.5, 0.5],
+        [0.63, 0.0], # do meio
+        [0.5, -0.5]
+    ]
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)
+    glBegin(GL_TRIANGLE_FAN)
+    glColor3f(0.0, 0.498, 0.996)
+    for v in verticesDoTrianguloDaDireita:
+        glVertex2fv(v)
+    glEnd()
+
+    verticesDasBorda = [
+        # fazer isso aki
+    ]
 
 def main():
     glfw.init()
@@ -320,6 +390,7 @@ def main():
         #quadrados()
         #trianguloComBorda()
         #fortaleza()
+        octogono()
         glfw.swap_buffers(window)
     glfw.terminate()
 
