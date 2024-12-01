@@ -43,12 +43,12 @@ def seMova():
 
 def render():
     global angulo
-    angulo += 10
+    angulo += 0.05
     glClear(GL_COLOR_BUFFER_BIT)
     
     glMatrixMode(GL_MODELVIEW)       
     glLoadIdentity()                                        
-    glRotatef(angulo, 1, 1, 1)                                           
+    glRotatef(angulo, 1, 0, 1)                                           
     nave()
 
 def nave():
